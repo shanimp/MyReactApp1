@@ -52,6 +52,7 @@ const ContactList = () => {
     </table>
     <div className="mt-6 flex justify-center">
       <button 
+        onClick={() => navigate("/")}
         className="rounded-lg bg-sky-100 px-5 py-2.5 text-sm font-semibold text-sky-700 shadow-sm transition-colors hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-500/50"
       >
         Go back
