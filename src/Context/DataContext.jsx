@@ -7,8 +7,13 @@ export function DataProvider({ children }) {
     const addItem = (newItem) => {
         setItems((prevItems) => [...prevItems, newItem]);
     };
+
+    const deleteItem = (id) => {
+        setItems((prevItems) => prevItems.filter((items, index) => index !== id));
+        return items;
+    }
     return (
-        <DataContext.Provider value={{items, addItem}}>
+        <DataContext.Provider value={{items, addItem, deleteItem}}>
             {children}
         </DataContext.Provider>
     );
