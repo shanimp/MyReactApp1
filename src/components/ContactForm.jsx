@@ -1,22 +1,30 @@
 import React from 'react'
+import {useNavigate } from 'react-router-dom';
 
 const ContactForm = () => {
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        //e.preventDefault();
+        navigate("/voter-list");
+    };
+
   return (
     <div>
-        <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
+        <div className="flex min-h-screen items-center justify-center bg-gray-800 px-4 py-12">
         <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-900/5">
           {/* Form Header */}
           <div className="mb-6">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            <h2 className="text-2xl font-bold tracking-tight text-red-900">
               Get in Touch
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-large text-gray-500">
               Please fill out the form below to send a message.
             </p>
           </div>
 
           {/* Form Body */}
-          <form  className="space-y-4">
+          <form  onSubmit={handleSubmit} className="space-y-4">
             {/* Name Field */}
             <div>
               <label
@@ -29,7 +37,7 @@ const ContactForm = () => {
                 type="text"
                 name="name"
                 placeholder="John Doe"
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:text-sm"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-blue-400 shadow-sm focus:border-black focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:text-sm"
               />
             </div>
 
@@ -45,7 +53,7 @@ const ContactForm = () => {
                 type="email"
                 name="email"
                 placeholder="john@example.com"
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:text-sm"
+                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-red-900 placeholder-blue-400 shadow-sm focus:border-black focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:text-sm"
               />
             </div>
 
@@ -68,7 +76,7 @@ const ContactForm = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-colors"
+              className="w-full rounded-lg bg-green-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-colors"
             >
               Submit Message
             </button>
