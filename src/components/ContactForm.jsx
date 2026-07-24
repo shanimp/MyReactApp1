@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useNavigate } from 'react-router-dom';
+import { useDataNew } from '../Context/DataContext';
 
 const ContactForm = () => {
+    const {addItem} = useDataNew();
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value} = e.target;
+        setFormData((prev) => ({...prev, [name]: value}));
+    };
 
     const handleSubmit = (e) => {
-        //e.preventDefault();
+        e.preventDefault();
+        //alert(formData.name);
+        addItem(formData);
+
         navigate("/voter-list");
     };
 
@@ -37,6 +52,7 @@ const ContactForm = () => {
                 type="text"
                 name="name"
                 placeholder="John Doe"
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-blue-400 shadow-sm focus:border-black focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:text-sm"
               />
             </div>
@@ -53,6 +69,7 @@ const ContactForm = () => {
                 type="email"
                 name="email"
                 placeholder="john@example.com"
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-red-900 placeholder-blue-400 shadow-sm focus:border-black focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:text-sm"
               />
             </div>
@@ -69,6 +86,7 @@ const ContactForm = () => {
                 name="message"
                 rows={4}
                 placeholder="Write your message here..."
+                onChange={handleChange}
                 className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:text-sm"
               />
             </div>
