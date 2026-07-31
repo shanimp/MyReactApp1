@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
+import EditContact from "./components/EditContact";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { DataProvider } from "./Context/DataContext";
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ContactForm />}/>
           <Route path="/voter-list" element={<ContactList />}/>
+          <Route path="/edit/:id" element={<EditContact />}/>
         </Routes>
       </BrowserRouter>
       </DataProvider>

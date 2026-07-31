@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const ContactList = () => {
     const {items, deleteItem} = useDataNew();
     const navigate = useNavigate();
+    const editItem = (id) => {
+      navigate(`/edit/${id}`);
+    }
 
   return (
     <div><div className="p-6">
@@ -38,7 +41,9 @@ const ContactList = () => {
             </td>
             <td className="border border-gray-300 p-2 text-center">
               <button
-                
+                onClick={() => {
+                  editItem(index);
+                }}
                 className="rounded bg-amber-300 px-3 py-1 text-xs font-semibold text-red-700 hover:bg-red-200 transition-colors"
               >
                 Edit

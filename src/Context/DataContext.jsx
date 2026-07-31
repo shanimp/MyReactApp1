@@ -12,8 +12,23 @@ export function DataProvider({ children }) {
         setItems((prevItems) => prevItems.filter((items, index) => index !== id));
         return items;
     }
+
+    const updateItem = (id, updatedData) => {
+        setItems((prevItems) => 
+        prevItems.map((item, index) => {
+            console.log(index);
+
+            if (index === Number(id)) {
+                return {...item, ...updatedData};
+            }
+            return item;
+        }),
+      );
+      return items;
+    };
+
     return (
-        <DataContext.Provider value={{items, addItem, deleteItem}}>
+        <DataContext.Provider value={{items, addItem, deleteItem, updateItem}}>
             {children}
         </DataContext.Provider>
     );
